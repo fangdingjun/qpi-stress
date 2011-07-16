@@ -1,0 +1,30 @@
+
+1.overview
+
+    this is a tool to test CPU's QPI channel:
+
+    start a process A and bind to cpu0, then request a share memory
+    start a process B and bind to cpu1, then attach to process A's share memory
+    process A write to the share memory, process B read from then share memory via QPI channel
+    process A read the process B's share memory via QPI channel
+
+         procA                   procB
+          ||                      ||
+        +------+              +--------+
+        |cpu0  |  QPI channel | cpu1   |
+        +------+              +--------+
+          ||                      ||
+        +-----+                 +-----+
+        |memA |                 |memB |
+        +-----+                 +-----+
+
+2. install
+   unpack the source and enter the source directory, type 
+   ./configure
+   make
+   make install
+
+3.usage
+  type 
+    qpi_stress -h 
+  for help
